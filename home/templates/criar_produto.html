@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar produto</title>
+</head>
+<body>
+    <h1>Crie seu produto aqui!</h1>
+
+    <br>
+    <br>
+
+    <form action="/home/criar_produto/" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Nome do produto:</label>
+        <input type="text" name="nome" placeholder="Nome do produto">
+        <label>Descrição do produto:</label>
+        <textarea type="text" name="descricao" rows="12" style="resize: none;" placeholder="Descricao do produto"></textarea>
+        <label>Categoria:</label>
+        <select name="categoria">
+            {% for i in categorias %}
+                <option value="{{i.id}}">{{i}}</option>
+            {% endfor %}
+        </select>
+        <label>Preço:</label>
+        <input type="number" name="preco">
+        <label>Insira uma imagem:</label>
+        <input type="file" name="image">
+        <input type="submit" value="Criar">
+    </form>
+
+    <br>
+    <br>
+
+    <a href="/home/">Voltar</a>
+</body>
+</html>

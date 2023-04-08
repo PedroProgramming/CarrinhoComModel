@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+</head>
+<body>
+    
+    <h1>Quantidade de produtos: {{carrinho_quantidade}} || Limite maximo de produto: 10</h1>
+    <a href="/carrinho/limpar_tudo/">Limpar Tudo</a>
+    <br>
+    <a href="/home/">Voltar</a>
+    <br>
+    <p>Preço total: R$ {{total}}</p>
+    {% if aviso == '1' %}
+        <p>Não a produtos aqui!</p>
+    {% endif %}
+
+    {% if aviso == '2' %}
+        <p>Limite maximo de produto: 10</p>
+    {% endif %}
+    <br>
+    <br>
+    {% for i in carrinho %}
+        <div style="border: 2px solid #ccc;">
+            <p>Nome: {{i.produtos_carrinho.nome}}</p>
+            <p>Descrição: {{i.produtos_carrinho.descricao}}</p>
+            <p>Categoria: {{i.produtos_carrinho.categoria}}</p>
+            <p>Preço: {{i.produtos_carrinho.preco}}</p>
+            <p>Imagem: <img src="{{i.produtos_carrinho.imagem.url}}"></p>
+            <a href="/carrinho/excluir_produto/{{i.id}}">Excluir  produto</a>
+        </div>
+    {% endfor %}
+    
+</body>
+</html>

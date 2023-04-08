@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Seja bem vindo!</h1>
+    <br>
+
+    <div><strong>Crie seu produto <a href="/home/criar_produto/">Clique aqui</a></strong></div>
+    <div><strong>Ver carrinho - qauntidade {{carrinho}}  <a href="/carrinho/ver_carrinho/">Clique aqui</a></strong></div>
+
+    <div>
+        <h1>Produtos:</h1>
+
+        {% for i in produtos %}
+            <div style="border: 2px solid #ccc;">
+                <p>Nome: {{i.nome}}</p>
+                <p>Descrição: {{i.descricao}}</p>
+                <p>Categoria: {{i.categoria}}</p>
+                <p>Preço: {{i.preco}}</p>
+                <p>Imagem: <img src="{{i.imagem.url}}"></p>
+                <a id="a" href="/carrinho/add/{{i.nome}}">Adiconar ao carrinho</a>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
